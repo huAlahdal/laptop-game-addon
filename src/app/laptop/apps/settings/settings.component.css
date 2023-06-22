@@ -1,0 +1,14 @@
+.settings-app {
+  width: 100%;
+  height: 100%;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: left;
+  justify-content: left;
+  gap: 2vh;
+  margin: 3%;
+}

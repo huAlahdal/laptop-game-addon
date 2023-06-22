@@ -1,0 +1,48 @@
+<div class="tablet-container">
+  <div class="apps-continer">
+    <div class="app" *ngFor="let app of apps; let i = index" (click)="GoToApp(app.name)">
+      <div class="app-icon" [ngStyle]="{color: app.color, backgroundColor: app.background}">
+        <i class={{app.icon}}></i>
+      </div>
+      <div class="app-label">{{app.label}}</div>
+    </div>
+  </div>
+  <div class="apps-div" appDragging *ngIf="openedApps.length > 0">
+    <div class="tools-bar" appDraggingHandle (click)="CloseApp()"></div>
+    <div class="app-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="tablet-taskbar">
+    <div class="left-side">
+      <img id="logoicon" src="assets/winlogo.png">
+      <!-- <img src="../../assets/fileexplorer.png"> -->
+    </div>
+
+    <div class="opened-apps">
+      <div class="taskbar-app" *ngFor="let taskApp of openedApps; let i = index" (click)="GoToApp(taskApp.name)" [ngStyle]="{backgroundColor: taskApp.current ? '#ffffff59' : '#ffffff00'}">
+        <div class="taskapp-icon" [ngStyle]="{color: taskApp.color, backgroundColor: taskApp.background}">
+          <i class={{taskApp.icon}}></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <span><i class="fas fa-volume-up"></i></span>
+      <span><i class="fas fa-wifi"></i></span>
+      <span class="clock"><i id='clock'>12:53 AM</i></span>
+      <!-- <span ><i class="fas fa-comment-alt-lines"></i></span> -->
+    </div>
+  </div>
+  <div class="notification-continer">
+    <div class="notification animate__animated {{notify.hide? 'animate__slideOutRight' : 'animate__slideInRight'}}" *ngFor="let notify of notifications">
+      <div class="notify-icon"[ngStyle]="{color: notify.color, backgroundColor: notify.background}"><i class={{notify.icon}}></i></div>
+      <div class="notify-title">{{notify.title}}</div>
+      <div class="notify-text">{{notify.text}}</div>
+    </div>
+  </div>
+</div>
+
+
+
+
